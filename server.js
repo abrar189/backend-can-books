@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const server = express();
-const PORT = process.env.PORT;
 server.use(cors());
+const PORT = process.env.PORT;
 
 mongoose.connect('mongodb://localhost:27017/book', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -35,7 +35,7 @@ function seedBooksCollection() {
     console.log(bookDb);
     bookDb.save();
 }
-// seedBooksCollection();
+seedBooksCollection();
 
 function seedUserCollection() {
     const UserDb = new userModel({
@@ -47,7 +47,9 @@ function seedUserCollection() {
                 status: 'FAVORITE FIVE'
             },
             {
-                name: 'The Momnt of Lift', description: 'Melinda Gates shares her how her exposure to the poor around the world has established the objectives of her foundation.', status: 'RECOMMENDED TO ME'
+                name: 'The Momnt of Lift', 
+                description: 'Melinda Gates shares her how her exposure to the poor around the world has established the objectives of her foundation.',
+                 status: 'RECOMMENDED TO ME'
             }
         ]
     })
