@@ -35,7 +35,7 @@ function seedBooksCollection() {
     console.log(bookDb);
     bookDb.save();
 }
-seedBooksCollection();
+// seedBooksCollection();
 
 function seedUserCollection() {
     const UserDb = new userModel({
@@ -56,7 +56,7 @@ function seedUserCollection() {
     console.log(UserDb);
     UserDb.save();
 }
-seedUserCollection();
+// seedUserCollection();
 
 //http://localhost:3001/books?userEmail=algourabrar@gmail.com
 server.get('/books', booksFun)
