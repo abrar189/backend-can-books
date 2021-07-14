@@ -136,6 +136,37 @@ function deleteBook(req, res) {
     })
 }
 
+server.put('/updateBook/:id',updateBookFun)
+
+function updateBookFun(req,res) {
+    console.log('aaaaaa',req.body);
+    console.log('aaaaaa',req.params);
+    // let numberCat = 10;
+    // console.log('numberCat',numberCat)
+    // console.log({numberCat})
+
+    let {name,description,status,userEmail} = req.body;
+    let index = Number(req.params.id);
+
+    userModel.findOne({email:userEmail},(error,userData)=>{
+        if(error) res.send('error in finding the data')
+        else {
+            console.log(userData)
+            userData.book.splice(index,1,{
+                name:name,
+                description:description,
+                status:status
+            })
+            console.log(userData)
+            userData.save();
+            res.send(userData.book)
+            
+        }
+    })
+
+
+}
+
 server.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
 })
