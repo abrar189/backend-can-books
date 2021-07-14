@@ -11,7 +11,7 @@ server.use(cors());
 const PORT = process.env.PORT;
 server.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/book', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://abrar:12345@cluster0-shard-00-00.bezrw.mongodb.net:27017,cluster0-shard-00-01.bezrw.mongodb.net:27017,cluster0-shard-00-02.bezrw.mongodb.net:27017/book?ssl=true&replicaSet=atlas-wtxjwi-shard-0&authSource=admin&retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const bookSchema = new mongoose.Schema({
     name: String,
@@ -57,7 +57,7 @@ function seedUserCollection() {
     console.log(UserDb);
     UserDb.save();
 }
-// seedUserCollection();
+seedUserCollection();
 
 //http://localhost:3001/books?userEmail=algourabrar@gmail.com
 server.get('/books', booksFun)
