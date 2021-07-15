@@ -59,7 +59,7 @@ function seedUserCollection() {
     console.log(UserDb);
     UserDb.save();
 }
-seedUserCollection();
+// seedUserCollection();
 
 //http://localhost:3001/books?userEmail=algourabrar@gmail.com
 server.get('/books', booksFun)
