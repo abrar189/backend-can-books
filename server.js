@@ -12,7 +12,9 @@ const PORT = process.env.PORT;
 server.use(express.json())
 // mongodb://abrar:12345@cluster0-shard-00-00.bezrw.mongodb.net:27017,cluster0-shard-00-01.bezrw.mongodb.net:27017,cluster0-shard-00-02.bezrw.mongodb.net:27017/book?ssl=true&replicaSet=atlas-wtxjwi-shard-0&authSource=admin&retryWrites=true&w=majority
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
-
+server.get('/', (req, res) => {
+    res.send('home route')
+})
 const bookSchema = new mongoose.Schema({
     name: String,
     description: String,
